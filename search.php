@@ -1,7 +1,6 @@
 <?php
 include('common.php');
 include('functions.php');
-set_time_limit(0);
 
 if(isset($_POST['condition'])) {    
     $condition = $_POST['condition'];
