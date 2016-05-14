@@ -30,8 +30,6 @@ Search terms:
         }
         ?>
 </ul>
-<h1>Contents of NCT00001372</h1>
-<pre>
 <?php
 	$url = 'https://clinicaltrials.gov/ct2/results/download?down_stds=all&down_typ=results'.
 	'&down_flds=shown&down_fmt=plain&term='
@@ -47,6 +45,4 @@ Search terms:
 	//print_r($response->asXML())
         echo "url is " . $url;
 ?>
-
-</pre>
 </html>
