@@ -7,6 +7,8 @@ Search terms:
         if(isset($_POST['condition'])) {
                 echo $_POST['condition'];
                 $condition = $_POST['condition'];
+        } else {
+                $condition = "";
         }
         ?>
 	<li>Intervention: </li>
@@ -14,6 +16,8 @@ Search terms:
         if(isset($_POST['intervention'])) {
                 echo $_POST['intervention'];
                 $intervention = $_POST['intervention'];
+        } else {
+                $intervention = "";
         }
         ?>
 	<li>Outcome: </li>
@@ -21,6 +25,8 @@ Search terms:
         if(isset($_POST['outcome'])) {
                 echo $_POST['outcome'];
                 $outcome = $_POST['outcome'];
+        } else {
+                $outcome = "";
         }
         ?>
 </ul>
