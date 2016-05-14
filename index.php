@@ -15,6 +15,7 @@
 <?php
 	//$response = file_get_contents('https://clinicaltrials.gov/show/NCT00001372?displayxml=true');
 	// print_r($response);
+
 ?>
 </pre>
 </html>
