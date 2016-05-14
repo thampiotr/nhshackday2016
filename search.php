@@ -1,3 +1,6 @@
+<?php
+include('unzip_query.php');
+?>
 <html>
 <h1>Search results</h1>
 Search terms:
@@ -31,18 +34,9 @@ Search terms:
         ?>
 </ul>
 <?php
-	$url = 'https://clinicaltrials.gov/ct2/results/download?down_stds=all&down_typ=results'.
-	'&down_flds=shown&down_fmt=plain&term='
-	.urlencode($condition) //Condition
-	.'&rslt=With&intr='
-	.urlencode($intervention) //Intervention
-	.'&outc='
-	.urlencode($outcome) //Outcome
-	.'&show_down=Y';
-
-	//$response = file_get_contents('https://clinicaltrials.gov/show/NCT00001372?displayxml=true');
+	$response = perform_query($condition, $intervention, $outcome);
 	//$response = new SimpleXMLElement($response);
-	//print_r($response->asXML())
-        echo "url is " . $url;
+	//print_r($response->asXML());
+        echo "response is: " . $response;
 ?>
 </html>
