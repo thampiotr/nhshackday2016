@@ -80,7 +80,17 @@
         }
 
         function analyze($allXMLs, $condition, $intervention, $outcome) {
-        	return json_encode($allXMLs);
+        	 //Integration with Andrew's Code Here
+            //First we take the array of XML objects and run the main parsing function
+            $output_array = array();
+
+            //echo "<pre>";print_r($allXMLs);echo "</pre>";
+            foreach ($allXMLs as $key=>$xmlObject)
+            {
+               array_push($output_array,trialParser($xmlObject, $outcome));
+            }
+
+            return json_encode($output_array, JSON_PRETTY_PRINT);
         }
 
 

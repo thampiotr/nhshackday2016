@@ -1,5 +1,7 @@
 <?php
 include('common.php');
+include('functions.php');
+set_time_limit(0);
 
 if(isset($_POST['condition'])) {    
     $condition = $_POST['condition'];
@@ -47,10 +49,10 @@ Search terms:
 
         $allXMLs = getData($condition, $intervention, $outcome);
         $result = analyze($allXMLs, $condition, $intervention, $outcome);
-
-        echo "<br>XMLs:<pre> Size: ".sizeof($allXMLs).'<br>';
+        echo $result;
+        /*echo "<br>XMLs:<pre> Size: ".sizeof($allXMLs).'<br>';
         print_r($result);
-        echo "</pre>";
+        echo "</pre>";*/
 
 	//$response = file_exists(filename)get_contents('https://clinicaltrials.gov/show/NCT00001372?displayxml=true');
 	//$response = new SimpleXMLElement($response);
