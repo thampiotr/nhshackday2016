@@ -1,8 +1,8 @@
 <?php
 
 		function debugLog($msg) {
-			if ($GLOBALS['debugLogging']) {
-				echo $msg.'<br>';
+			if (isset($GLOBALS['debugLogging']) && $GLOBALS['debugLogging']) {
+				echo 'DEBUG: '.$msg.'<br>';
 			}
 		}
 
