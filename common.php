@@ -25,8 +25,9 @@
         }
 
         function downladAndUnzip($url, $pathToDownladDirectory) {
+                debugLog('url: '.$url);          
                 $zipFileName = 'tmp.zip';
-                $test_response = file_get_contents($url);                
+                $test_response = file_get_contents($url);      
                 mkdir($pathToDownladDirectory, 0777, true);
                 file_put_contents($pathToDownladDirectory.$zipFileName, $test_response);
                 $zip = new ZipArchive();
