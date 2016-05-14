@@ -8,6 +8,7 @@
         function getRequestKey($condition, $intervention, $outcome) {
         		$combinedKey = $condition.$intervention.$outcome;
     			if (empty(trim($condition)) || empty(trim($intervention)) || empty(trim($outcome))) {
+    				header("HTTP/1.1 500 Internal Server Error");
     				throw new Exception("All parameters need to be provided and non-empty", 1);    				
     			}
                 return md5($combinedKey);
@@ -28,7 +29,8 @@
                      $zip->extractTo($pathToDownladDirectory);
                      $zip->close();
                  } else {
-                     throw new Exception('Could not unzip file '.$pathToDownladDirectory.$zipFileName);                  
+                     header("HTTP/1.1 500 Internal Server Error");              
+                     throw new Exception('Could not unzip file '.$pathToDownladDirectory.$zipFileName);    
                  }
         }
 
@@ -59,15 +61,15 @@
                 $cacheKey = getRequestKey($condition, $intervention, $outcome);
                 $cachePath = getCacheTmpPath($cacheKey);
                 $allXMLs = array();
-                if (!file_exists($cachePath)) {
-                        echo "<h2>Cache MISS - downloading ZIP</h2>";                
+                if (!file_exists($cachePath)) {                     
                         downladAndUnzip(buildRequestURL($condition, $intervention, $outcome), $cachePath);
                         $allXMLs = readAllXMLsFromDirectory($cachePath);
-                } else {
-                        echo "<h2>Cache HIT - Reading from hard drive</h2>";                
-                }
-
+                } 
                 return readAllXMLsFromDirectory($cachePath);            
+        }
+
+        function analyze($allXMLs, $condition, $intervention, $outcome) {
+        	return json_encode($allXMLs);
         }
 
 

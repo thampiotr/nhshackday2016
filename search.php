@@ -41,9 +41,10 @@ Search terms:
        
 
         $allXMLs = getData($condition, $intervention, $outcome);
+        $result = analyze($allXMLs, $condition, $intervention, $outcome);
 
         echo "<br>XMLs:<pre> Size: ".sizeof($allXMLs).'<br>';
-        print_r(json_encode($allXMLs));
+        print_r($result);
         echo "</pre>";
 
 	//$response = file_get_contents('https://clinicaltrials.gov/show/NCT00001372?displayxml=true');

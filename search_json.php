@@ -19,8 +19,7 @@ include('common.php');
         } else {
                 $outcome = "";
         }
-
-        echo $condition.$intervention.$outcome;
         $allXMLs = getData($condition, $intervention, $outcome);
-        print_r(json_encode($allXMLs));
+        header('Content-Type: application/json');
+        print_r(analyze($allXMLs, $condition, $intervention, $outcome));
 ?>
