@@ -7,12 +7,13 @@
   Intervention:<br>
   <input type="text" name="intervention"><br>
   Outcome:<br>
-  <input type="text" name="outcome">
+  <input type="text" name="outcome"><br>
+  <input type="submit" value="Search">
 </form>
 
 <pre>
 <?php
-	// $response = file_get_contents('https://clinicaltrials.gov/show/NCT00001372?displayxml=true');
+	//$response = file_get_contents('https://clinicaltrials.gov/show/NCT00001372?displayxml=true');
 	// print_r($response);
 ?>
 </pre>
