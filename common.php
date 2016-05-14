@@ -1,5 +1,11 @@
 <?php
 
+		function debugLog($msg) {
+			if ($GLOBALS['debugLogging']) {
+				echo $msg.'<br>';
+			}
+		}
+
  		function endsWith($haystack, $needle) {
                 // Horrible but that's apparently the way to do it in PHP...
                 return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== false);
@@ -59,12 +65,17 @@
 
         function getData($condition, $intervention, $outcome) {
                 $cacheKey = getRequestKey($condition, $intervention, $outcome);
+                debugLog('cacheKey: '.$cacheKey);
                 $cachePath = getCacheTmpPath($cacheKey);
+                debugLog('cachePath: '.$cachePath);
                 $allXMLs = array();
-                if (!file_exists($cachePath)) {                     
-                        downladAndUnzip(buildRequestURL($condition, $intervention, $outcome), $cachePath);
-                        $allXMLs = readAllXMLsFromDirectory($cachePath);
-                } 
+                if (!file_exists($cachePath)) { 
+                	debugLog('Cache MISS');                   
+                    downladAndUnzip(buildRequestURL($condition, $intervention, $outcome), $cachePath);
+                    $allXMLs = readAllXMLsFromDirectory($cachePath);
+                } else {
+                	debugLog('Cache HIT');                   
+                }
                 return readAllXMLsFromDirectory($cachePath);            
         }
 

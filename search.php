@@ -39,6 +39,11 @@ Search terms:
 </ul>
 <?php
        
+       $GLOBALS['debugLogging'] = true;
+
+       debugLog('Condition: '.$condition);
+       debugLog('Intervention: '.$intervention);
+       debugLog('Outcome: '.$outcome);
 
         $allXMLs = getData($condition, $intervention, $outcome);
         $result = analyze($allXMLs, $condition, $intervention, $outcome);
@@ -47,7 +52,7 @@ Search terms:
         print_r($result);
         echo "</pre>";
 
-	//$response = file_get_contents('https://clinicaltrials.gov/show/NCT00001372?displayxml=true');
+	//$response = file_exists(filename)get_contents('https://clinicaltrials.gov/show/NCT00001372?displayxml=true');
 	//$response = new SimpleXMLElement($response);
 	//print_r($response->asXML())       
         // echo "Test request key " . $cacheKey . '<br>';
