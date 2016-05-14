@@ -12,12 +12,13 @@ function trialParser ($xmlObject, $userDefinedOutcome)
 	//Now we pick out the first outcome which contains the outcome term
 	$found = FALSE;
 
+
 	//The outcomes list is stored in: $input['clinical_results']['outcome_list']
 	//Cycle through the outcomes list, and try to identify the first 
 	foreach ($input['clinical_results']['outcome_list']['outcome'] as $key=>$value)
 	{
-		while (!$found)
-		{
+		// while (!$found)
+		// {
 			//So explode the subobject by the user defined outcome.
 			$tempArray = explode($userDefinedOutcome, strtolower($value['title']));
 			//rint_r($tempArray);
@@ -25,11 +26,18 @@ function trialParser ($xmlObject, $userDefinedOutcome)
 			if (count($tempArray) >= 2)
 			{
 				$found = TRUE;
+
 				//Set the $outcome variable [i.e. the one we are meeting]
 				$outcome = $value; 
+				break;
 			}
-		}
+		// }
 	}	 
+
+
+
+	
+
 
 	//$outcome contains the matched outcome
 	/*echo "<pre>"; 

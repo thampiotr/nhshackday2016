@@ -1,5 +1,6 @@
 <?php
 include('common.php');
+include('functions.php');
 ?>
 <?php
         if(isset($_GET['condition'])) {    

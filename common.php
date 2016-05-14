@@ -88,7 +88,7 @@
             //echo "<pre>";print_r($allXMLs);echo "</pre>";
             foreach ($allXMLs as $key=>$xmlObject)
             {
-               array_push($output_array,trialParser($xmlObject, $outcome));
+                array_push($output_array,trialParser($xmlObject, $outcome));
             }
 
             return json_encode($output_array, JSON_PRETTY_PRINT);
