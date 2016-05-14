@@ -1,7 +1,7 @@
 <html>
 <h1>Hello NHS Hack Day</h1>
 
-<form>
+<form action='search.php'>
   Condition:<br>
   <input type="text" name="condition"><br>
   Intervention:<br>
