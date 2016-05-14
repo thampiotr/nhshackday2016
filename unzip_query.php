@@ -14,14 +14,14 @@ function scrape_results($url) {
 }
 
 function build_url($condition, $intervention, $outcome) {
-	$url = 'https://clinicaltrials.gov/ct2/results/download?down_stds=all&down_typ=results'.
+	$url = strtolower('https://clinicaltrials.gov/ct2/results/download?down_stds=all&down_typ=results'.
 	'&down_flds=shown&down_fmt=plain&term='
 	.urlencode($condition) //Condition
 	.'&rslt=With&intr='
 	.urlencode($intervention) //Intervention
 	.'&outc='
 	.urlencode($outcome) //Outcome
-	.'&show_down=Y';
+	.'&show_down=Y');
 
         return $url;
 }
