@@ -1,3 +1,6 @@
+<?php
+include('unzip_query.php');
+?>
 <html>
 <h1>Search results</h1>
 Search terms:
@@ -104,6 +107,5 @@ Search terms:
 	//print_r($response->asXML())       
         echo "Test request key " . $cacheKey . '<br>';
         echo "Tmp cache path " . getCacheTmpPath($cacheKey) . '<br>';
-
 ?>
 </html>
