@@ -95,6 +95,14 @@ function trialParser ($xmlObject, $userDefinedOutcome)
         
         	        $outputArray = array();
         	        $outputArray['trialID'] = $input['id_info']['nct_id'];
+        	        $outputArray['studyDesignText'] = $input['study_design'];
+                        if(strpos(strtolower($outputArray['studyDesignText']), "double blind") || strpos(strtolower($outputArray['studyDesignText']), "double-blind")) {
+                            $outputArray['studyDesignBlind'] = "double";
+                        } elseif(strpos(strtolower($outputArray['studyDesignText']), "single blind") || strpos(strtolower($outputArray['studyDesignText']), "single-blind")) {
+                            $outputArray['studyDesignBlind'] = "single";
+                        } else {
+                            $outputArray['studyDesignBlind'] = "not";
+                        }
         	        $outputArray['outcome']=array('type'=>$outcome['type'], 'title'=>$outcome['title'], 'description'=>$outcome['description'],'time_frame'=>$outcome['time_frame'],'population'=>$outcome['population']);
         	        $outputArray['trialResults'] = $groupData;
         	        
