@@ -109,7 +109,7 @@ function trialParser ($xmlObject, $userDefinedOutcome, $condition, $intervention
                         // Pass query terms -- TODO: pass these better, only once.
                         $outputArray['conditionTerms'] = $condition;
                         $outputArray['interventionTerms'] = $intervention;
-                        $outputArray['outcomeTerms'] = $outcome;
+                        $outputArray['outcomeTerms'] = $userDefinedOutcome;
 
         	        $outputArray['outcome']=array('type'=>$outcome['type'], 'title'=>$outcome['title'], 'description'=>$outcome['description'],'time_frame'=>$outcome['time_frame'],'population'=>$outcome['population']);
         	        $outputArray['trialResults'] = $groupData;
