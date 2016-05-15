@@ -1,7 +1,7 @@
 <?php
 
 //This function parses an XML result for a trial. Two inputs are needed, first an XML object, and second the STRING of the outcome being measured
-function trialParser ($xmlObject, $userDefinedOutcome)
+function trialParser ($xmlObject, $userDefinedOutcome, $condition, $intervention)
 {
         //Process: a) Searching outcomes for first occurence of of the outcomes word
 	//For the sake of sanity, convert the XML object to an array:
@@ -96,6 +96,8 @@ function trialParser ($xmlObject, $userDefinedOutcome)
         	        $outputArray = array();
         	        $outputArray['trialID'] = $input['id_info']['nct_id'];
         	        $outputArray['studyDesignText'] = $input['study_design'];
+
+                        // Check blinding of trial.
                         if(strpos(strtolower($outputArray['studyDesignText']), "double blind") || strpos(strtolower($outputArray['studyDesignText']), "double-blind")) {
                             $outputArray['studyDesignBlind'] = "double";
                         } elseif(strpos(strtolower($outputArray['studyDesignText']), "single blind") || strpos(strtolower($outputArray['studyDesignText']), "single-blind")) {
@@ -103,6 +105,12 @@ function trialParser ($xmlObject, $userDefinedOutcome)
                         } else {
                             $outputArray['studyDesignBlind'] = "not";
                         }
+
+                        // Pass query terms -- TODO: pass these better, only once.
+                        $outputArray['conditionTerms'] = $condition;
+                        $outputArray['interventionTerms'] = $intervention;
+                        $outputArray['outcomeTerms'] = $outcome;
+
         	        $outputArray['outcome']=array('type'=>$outcome['type'], 'title'=>$outcome['title'], 'description'=>$outcome['description'],'time_frame'=>$outcome['time_frame'],'population'=>$outcome['population']);
         	        $outputArray['trialResults'] = $groupData;
         	        
