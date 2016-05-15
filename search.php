@@ -48,7 +48,16 @@ Search terms:
 
         $allXMLs = getData($condition, $intervention, $outcome);
         $result = analyze($allXMLs, $condition, $intervention, $outcome);
+
+        // Save JSON somewhere public, for passing to Shiny via GET.
+        $cacheKey = getRequestKey($condition, $intervention, $outcome);
+        $json_path = "json/".$cacheKey.".json";
+        file_put_contents($json_path, $result);
+
+        echo "local JSON location is " . $json_path . "\r\n";
         echo $result;
+
+
         /*echo "<br>XMLs:<pre> Size: ".sizeof($allXMLs).'<br>';
         print_r($result);
         echo "</pre>";*/
