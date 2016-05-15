@@ -96,6 +96,10 @@ function trialParser ($xmlObject, $userDefinedOutcome, $condition, $intervention
         	        $outputArray = array();
         	        $outputArray['trialID'] = $input['id_info']['nct_id'];
         	        $outputArray['studyDesignText'] = $input['study_design'];
+        	        $outputArray['eligibilityText'] = $input['eligibility']['criteria']['textblock'];
+        	        $outputArray['eligibilityGender'] = $input['eligibility']['gender'];
+        	        $outputArray['eligibilityMinAge'] = $input['eligibility']['minimum_age'];
+        	        $outputArray['eligibilityMaxAge'] = $input['eligibility']['maximum_age'];
 
                         // Check blinding of trial.
                         if(strpos(strtolower($outputArray['studyDesignText']), "double blind") || strpos(strtolower($outputArray['studyDesignText']), "double-blind")) {
