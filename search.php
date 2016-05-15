@@ -3,19 +3,19 @@ include('common.php');
 include('functions.php');
 
 if(isset($_POST['condition'])) {    
-    $condition = $_POST['condition'];
+    $condition = strtolower($_POST['condition']);
 } else {
     $condition = "";
 }
 
 if(isset($_POST['intervention'])) {
-        $intervention = $_POST['intervention'];
+        $intervention = strtolower($_POST['intervention']);
 } else {
         $intervention = "";
 }
 
 if(isset($_POST['outcome'])) {        
-        $outcome = $_POST['outcome'];
+        $outcome =strtolower($_POST['outcome']);
 } else {
         $outcome = "";
 }
