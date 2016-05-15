@@ -34,11 +34,6 @@ function trialParser ($xmlObject, $userDefinedOutcome)
 		// }
 	}	 
 
-
-
-	
-
-
 	//$outcome contains the matched outcome
 	/*echo "<pre>"; 
 	print_r($outcome);
@@ -125,52 +120,4 @@ foreach ($outcome['measure_list']['measure'] as $key=>$value)
 	//Output in JSON for a forrest plot.
 }
 
-
-//This function takes in the parent XML Object, extracts the outcomes, then matches the first outcome measure to have the input given for "userDefinedOutcome", and returns this in full
-function matchOutcomeMeasures ($xmlObject, $userDefinedOutcome)
-{
-	$arrayOfMeasures = array();
-	$found = FALSE;
-
-	//Cycle through all XML Objects
-	foreach ($xmlObject as $key => $subObject) {
-
-		/*//Cycle through subobjects
-		foreach ($subObject as $value) {
-			print_r($subObject);
-		*/
-			//Check if the subobject has a 'measure' property in it
-			if (property_exists($subObject,"outcome_list"))
-			{
-				echo "hi2";
-				print_r($subObject);
-
-				if (property_exists($subObject->outcome,"measure"))
-				{	
-					//If the sub-object does have a measure property in it, check if the measure property has the term specified in $userDefinedOutcome
-					//If it does, return this
-					//If it doesn't, then return FALSE
-					//print_r($subObject);
-
-					//So explode the subobject by the user defined outcome.
-					$tempArray = explode($userDefinedOutcome, strtolower($subObject->outcome->measure));
-					//print_r($tempArray);
-					//Now we count the number of array elements. If >1, then the term is found
-					if (count($tempArray) >= 2)
-					{
-						return $subObject;
-					}
-				}
-			}
-		//}
-
-		//If the search term was not found at all in any of the subobjects, return FALSE
-		
-	}
-
-	//$arrayOfMeasures contains an array of all the measures. 
-	//Now we search this array for the "outcome" term and select the first outcome which has the output term in it
-
-	return FALSE;
-}
 ?>
